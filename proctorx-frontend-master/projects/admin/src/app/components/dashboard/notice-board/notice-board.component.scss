@@ -1,0 +1,12 @@
+::ng-deep{
+    .p-dialog.notice{
+        width: 500px !important;
+    }
+    .p-panel .p-panel-header .p-panel-title {
+        font-weight: 500;
+        line-height: 25px;
+    }
+}
+.notice-textarea{
+    resize: none;
+}

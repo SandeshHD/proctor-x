@@ -1,0 +1,15 @@
+<div class="container-fluid p-0">
+    <p-toast key="warning-key" position="top-right"></p-toast>
+    <div class="test-window-header w-100 px-4 py-3 m-0 row align-items-center">
+        <h5 class="m-0 brand col-2">Proctor <span class="colored">X</span></h5>
+        <div class="timer-section col-8">
+            <div class="timer d-flex gap-3 text-light px-4 py-2 rounded">
+                {{timeString}}
+            </div>
+        </div>
+        <div class="submit-section col-2 px-0">
+            <button class="submit-btn btn" (click)="submitTest()">Submit section</button>
+        </div>
+    </div>
+    <app-question (onFinish)="submitTest()"></app-question>
+</div>

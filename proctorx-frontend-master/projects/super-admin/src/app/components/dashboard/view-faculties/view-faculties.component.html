@@ -1,0 +1,64 @@
+<p-dialog header="Update Faculty" [(visible)]="updateModal" [modal]="true" [draggable]="false" styleClass="topic" [resizable]="false">
+    <form [formGroup]="profileForm" class="profile-form">
+        <div class="row align-items-end px-3 pb-4">
+            <label for="usn" class="form-label p-0">Employee ID</label>
+            <input pInputText type="text" formControlName="employee_id">
+        </div>
+        <div class="row align-items-end px-3 pb-4">
+            <label for="name" class="form-label p-0">Name</label>
+            <input pInputText type="text" formControlName="name">
+        </div>
+        <div class="row align-items-end px-3 pb-4">
+            <label for="q-title" class="form-label p-0">Email</label>
+            <input pInputText type="text" formControlName="email">
+        </div>
+        <div class="row align-items-end px-3 pb-4">
+            <label for="q-title" class="form-label p-0">Branch</label>
+            <p-dropdown styleClass="w-100 p-0" [options]="branches.slice(1)" optionLabel="branch_name" optionValue="branch_id" formControlName="branch" placeholder="Branch"></p-dropdown>
+        </div>
+        <div class="row px-3">
+            <button class="py-2" label="Update" pButton (click)="updateFaculty()"></button>
+        </div>
+    </form>
+</p-dialog>
+<div class="dashboard-right">
+    <div class="dashboard-heading d-flex justify-content-between align-items-center mb-4">
+        <h5 class="header m-0">View Faculties</h5>
+        <div class="d-flex gap-2 align-items-center">
+            <p-dropdown [style]="{'width':'200px'}" [options]="branches" optionLabel="branch_name" optionValue="branch_id" (onChange)="changeBranch($event)" placeholder="Branch"></p-dropdown>
+            <p-dropdown [style]="{'width':'200px'}" [options]="status" (onChange)="approvalStatus($event)" placeholder="Status"></p-dropdown>
+            <input type="text" pInputText (input)="searchFaculty($event)" placeholder="Search"/>
+        </div>
+    </div>
+    <p-table #table [value]="faculties" styleClass="mb-5" [rows]="5" [totalRecords]="totalRecords" [showCurrentPageReport]="true" [rowsPerPageOptions]="[5,10,25,50]" [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [lazy]="true" (onLazyLoad)="paginationHandler($event)">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>ID</th>
+                <th>Employee ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Branch</th>
+                <th>Change Status</th>
+                <th>Action</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-faculty let-index="rowIndex">
+            <tr>
+                <td>{{index+1}}</td>
+                <td>{{faculty.employee_id}}</td>
+                <td>{{faculty.name}}</td>
+                <td>{{faculty.email}}</td>
+                <td>{{faculty.branch_name}}</td>
+                <td><p-tag styleClass="px-3" role="button" [severity]="faculty.verified?'danger':'success'" [value]="faculty.verified?'Deactivate':'Activate'" (click)="changeStatus(faculty)"></p-tag></td>
+                <td class="d-flex gap-2 justify-content-center">
+                    <!-- <button pButton icon="pi pi-eye" class="btn action-button" pTooltip="View" tooltipPosition="left" appendTo="body" (click)="openFacultyDetails(faculty.usn)"></button> -->
+                    <button pButton icon="pi pi-pencil" class="btn action-button" pTooltip="Edit" tooltipPosition="left" appendTo="body" (click)="openEditFacultyModal($event,faculty.id)"></button>
+                    <button pButton icon="pi pi-trash" class="btn action-button p-button-danger" pTooltip="Delete" tooltipPosition="left" appendTo="body" (click)="deleteFaculty($event,faculty.id)"></button>
+                    <p-confirmPopup></p-confirmPopup>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+<p-toast position="bottom-right"> </p-toast>

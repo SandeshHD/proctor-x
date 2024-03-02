@@ -1,0 +1,39 @@
+@import '../../../variables.scss';
+.dashboard-container{
+    display: grid;
+    grid-template-columns: 20% 80%;
+    .sidebar{
+        position: sticky;
+        top: 0;
+        background-color: $white-color;
+        height: 100vh;
+        .sidebar-links{
+            .sidebar-link{
+                display: flex;
+                align-items: center;
+                column-gap: 20px;
+                text-decoration: none;
+                color:$black-color;
+                padding:15px 20px !important;
+                cursor: pointer;
+            }
+        }
+    }
+    .active{
+        background-color: $primary-color;
+        color: #fff !important;
+        border-radius: 5px;
+    }
+}
+
+::ng-deep{
+    .p-dialog{
+        width: 90vw !important;
+    }
+    .p-dialog-content{
+        padding-top: 5px !important;
+    }
+    .p-button.p-button-icon-only{
+        padding:0.5rem 0;
+    }
+}

@@ -1,0 +1,62 @@
+@import '../../../../variables.scss';
+.action{
+    cursor: pointer;
+    text-align: center;
+    .action-button{
+        font-size: 0.8em;
+    }
+    .result-button{
+        background-color: $secondary-color;
+        border:1px solid $secondary-color;
+    }
+}
+.options-section{
+    display: grid;
+    gap:20px;
+    grid-template-columns: 55% 45%;
+    .option-area{
+        display: flex;
+        gap:20px;
+        align-items: center;
+        position:relative;
+        margin-bottom: 15px;
+    }
+    .options{
+        border-right: 1px solid #e0e3e7;
+        padding-right: 30px;
+    }
+    .option{
+        width:100%;
+        display: flex;
+        background-color:#ffffff;
+        padding:1em 0.8em;
+        outline:2px solid #dee2e6;
+        cursor: pointer;
+        border-radius: 5px;
+        label{
+            font-size: 0.85rem;
+            margin-left:10px;
+        }
+        &:has(> input[type="radio"]:checked){
+            outline:2px solid $primary-color;
+        }
+        input[type="radio"]{
+            width: 20px;
+            height: 20px;
+            accent-color:$primary-color;
+        }
+    }
+    .right-answer{
+        display: none;
+        color:#426F61;
+        font-size: 1.5rem;
+        position:absolute;
+        right:10px;
+    }
+    .question-info-table{
+        font-size: 0.8rem;
+        td{
+            padding-bottom:6px;
+        }
+    }
+}

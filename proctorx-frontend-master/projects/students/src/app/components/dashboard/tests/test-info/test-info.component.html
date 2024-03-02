@@ -1,0 +1,73 @@
+<p-toast position="bottom-right"> </p-toast>
+<div class="container ti-container m-auto">
+    <div class="ti-modal-header">
+        <div class="ti-toparea">
+            <h6 class="ti-heading m-0">{{test.test_name | titlecase}}</h6>
+            <small class="test-by colored">By {{test.faculty_name}}</small>
+        </div>
+        <div class="close" (click)="closeModal(false)">X</div>
+    </div>
+    <div class="ti-stats-container">
+        <div class="ti-stat stat-1">
+            <!-- <div class="stat-block">
+                <h1 class="stat-num m-0">{{test && (test.sections<10?'0'+test.sections:test.sections)}}</h1>
+                <div class="stat-label">Sections</div>
+            </div> -->
+            <div class="stat-block">
+                <h1 class="stat-num m-0">{{test && (test.questions<10?'0'+test.questions:test.questions)}}</h1>
+                <div class="stat-label">Questions</div>
+            </div>
+            <div class="stat-block">
+                <h1 class="stat-num m-0">{{test && (test.duration<10?'0'+test.duration/60:test.duration/60)}}</h1>
+                <div class="stat-label">Minutes</div>
+            </div>
+            <div class="stat-block">
+                <h1 class="stat-num m-0">{{test && (test.marks<10?'0'+test.marks:test.marks)}}</h1>
+                <div class="stat-label">Marks</div>
+            </div>
+            <div class="stat-timer-block">
+                <div class="timer-heading">
+                    Time remaining
+                </div>
+                <h2 class="stat-timer">
+                    {{timeRemaining}}
+                </h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="ti-instructions">
+        <h6>Read the Information carefully before taking the test</h6>
+        <ol>
+            <li>Make sure you have a stable internet connection and a reliable device to take the test on.</li>
+            <li>Find a quiet, distraction-free environment to take the test in. This will help you focus and avoid any unnecessary interruptions.</li>
+            <li>Read all instructions and questions carefully before answering. Make sure you understand what is being asked of you.</li>
+            <li>Keep track of the time limit and pace yourself accordingly. Try to allocate an appropriate amount of time for each question.</li>
+            <li>Double-check your work before submitting the test. Make sure you have answered all questions and have not left anything blank.</li>
+            <li>After submitting, wait for confirmation that your test has been received and processed. If you encounter any issues or have questions, contact the test administrator as soon as possible.</li>
+        </ol>
+    
+    </div>
+
+    <!-- <table class="ti-table table">
+        <thead>
+            <tr>
+                <th>Sections</th>
+                <th>Questions</th>
+                <th>Marks</th>
+                <th>Duration</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let part of testParts">
+                <td>{{part.part_name}}</td>
+                <td>{{part.questions}}</td>
+                <td>{{part.marks}}</td>
+                <td>{{part.duration?part.duration+'mins':''}}</td>
+            </tr>
+        </tbody>
+    </table> -->
+    <div class="start-container">
+        <button class="start-test" (click)="startTest(test.id)">Start Test</button>
+    </div>
+</div>

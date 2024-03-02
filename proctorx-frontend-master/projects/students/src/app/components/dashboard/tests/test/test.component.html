@@ -1,0 +1,19 @@
+<div class="test-card ">
+    <h5 class="test-card-heading my-1">{{test.test_name}}</h5>
+    <div class="deadline colored">Deadline {{test.deadline|date}}</div>
+    <div class="info-section my-4">
+        <div class="info-block">
+            <h5>{{test.duration/60<10?'0'+test.duration/60:test.duration/60}}</h5>
+            <div class="info-desc ">Minutes</div>
+        </div>
+        <div class="info-block d-flex flex-column align-items-end">
+            <h5>{{test.questions<10?'0'+test.questions:test.questions}}</h5>
+            <div class="info-desc">Questions</div>
+        </div>
+        <div class="info-block">
+            <h5>{{test.marks<10?'0'+test.marks:test.marks}}</h5>
+            <div class="info-desc">Marks</div>
+        </div>
+    </div>
+    <button class="btn take-test" (click)="openTestModal()">Take Test</button>
+</div>
